@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 var express = require("express");
 var mongoose = require("mongoose");
 
@@ -11,9 +13,12 @@ app.use(express.json());
 require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/imageperformance", {
-  useNewUrlParser: true
-});
+mongoose.connect(
+  process.env.MONGODB_URI || "mongodb://localhost/imageperformance",
+  {
+    useNewUrlParser: true
+  }
+);
 
 app.listen(PORT, function() {
   console.log(`Now listening on port: ${PORT}`);
